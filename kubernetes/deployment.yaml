@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: telegram-bot
+spec:
+  replicas: 3  # Number of bot instances
+  selector:
+    matchLabels:
+      app: telegram-bot
+  template:
+    metadata:
+      labels:
+        app: telegram-bot
+    spec:
+      containers:
+      - name: telegram-bot
+        image: your-dockerhub-username/telegram-bot:latest
+        env:
+        - name: API_ID
+          valueFrom:
+            secretKeyRef:
+              name: telegram-secrets
+              key: api_id
+        - name: API_HASH
+          valueFrom:
+            secretKeyRef:
+              name: telegram-secrets
+              key: api_hash
+        - name: BOT_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: telegram-secrets
+              key: bot_token
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "250m"
+          limits:
+            memory: "256Mi"
+            cpu: "500m"
