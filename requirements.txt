@@ -1,0 +1,17 @@
+# Core dependencies
+telethon
+yt-dlp
+redis
+python-dotenv
+
+# Async and utility libraries
+aiohttp
+asyncio
+
+# Logging and debugging
+loguru
+
+# Optional (for advanced features)
+ffmpeg-python
+
+# where's fucking weed?
