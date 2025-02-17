@@ -4,7 +4,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # fuck we always assume it to be debian 
-RUN apt-get update -y && apt-get upgrade -y 
+RUN apt-get update -y && apt-get upgrade -y && apt install ffmpeg -y
 
 COPY . .
 
